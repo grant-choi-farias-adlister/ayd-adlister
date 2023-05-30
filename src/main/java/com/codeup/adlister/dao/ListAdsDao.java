@@ -30,6 +30,7 @@ public class ListAdsDao implements Ads {
     @Override
     public List<Ad> search(String query) {
         return null;
+
     }
 
     private List<Ad> generateAds() {

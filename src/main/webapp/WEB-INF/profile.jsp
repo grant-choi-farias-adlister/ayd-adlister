@@ -11,6 +11,7 @@
 
 <div class="container">
     <h1>Welcome, ${sessionScope.user.username}!</h1>
+
     <c:if test="${not empty ads}">
         <h2>Your Ads:</h2>
         <table class="table">
@@ -31,7 +32,24 @@
         </table>
     </c:if>
 
+
+    <p>Username: ${sessionScope.user.username}</p>
+    <p>Email: ${sessionScope.user.email}</p>
+
+    <!-- Edit button -->
+    <form  method="get" action="/edituser">
+        <input type="hidden" name="userId" value="${sessionScope.user.id}">
+        <input type="submit" value="Edit">
+    </form>
+
+    <!-- Delete button -->
+    <form  method="get" action="/deleteUser">
+        <input type="hidden" name="userId" value="${sessionScope.user.id}">
+        <input type="submit" value="Delete">
+    </form>
+
 </div>
 
 </body>
 </html>
+

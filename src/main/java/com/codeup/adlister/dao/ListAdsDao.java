@@ -28,6 +28,7 @@ public class ListAdsDao implements Ads {
     }
 
     @Override
+
     public void update(Ad ad) {
         if (ads == null) {
             ads = generateAds();
@@ -80,6 +81,11 @@ public class ListAdsDao implements Ads {
             }
         }
         return userAds;
+
+    public List<Ad> search(String query) {
+        return null;
+
+
     }
 
     private List<Ad> generateAds() {

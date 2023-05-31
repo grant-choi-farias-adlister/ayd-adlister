@@ -1,21 +1,22 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: danielfarias
+  Date: 5/31/23
+  Time: 11:36 AM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <jsp:include page="partials/head.jsp">
-        <jsp:param name="title" value="Register For Our Site!" />
+    <title>Title</title>
+    <jsp:include page="/WEB-INF/partials/head.jsp">
+        <jsp:param name="title" value="Your Profile" />
     </jsp:include>
 </head>
 <body>
-<jsp:include page="partials/navbar.jsp" />
-<div class="container">
-    <h1>Please fill in your information.</h1>
-    <%-- Display error message if username is unavailable --%>
-    <% if (request.getParameter("error") != null && request.getParameter("error").equals("username")) { %>
-    <div class="alert alert-danger" role="alert">
-        This username is unavailable. Please choose a different username.
-    </div>
-    <% } %>
-    <form action="/register" method="post">
+ <h1>done</h1>
+<div>
+    <form action="/edituser" method="post">
         <div class="form-group">
             <label for="username">Username</label>
             <input id="username" name="username" class="form-control" type="text">
@@ -33,6 +34,7 @@
             <input id="confirm_password" name="confirm_password" class="form-control" type="password">
         </div>
         <input type="submit" class="btn btn-primary btn-block">
+
     </form>
 </div>
 </body>

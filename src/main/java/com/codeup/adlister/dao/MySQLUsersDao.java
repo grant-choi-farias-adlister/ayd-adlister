@@ -87,4 +87,9 @@ public class MySQLUsersDao implements Users {
             throw new RuntimeException("Error deleting user", e);
         }
     }
+
+    @Override
+    public void edit(Object user) {
+
+    }
 }

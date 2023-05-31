@@ -15,4 +15,6 @@ public interface Users {
     default void delete(User user) {
 
     }
+
+    void edit(Object user);
 }

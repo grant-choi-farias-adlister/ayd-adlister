@@ -28,8 +28,9 @@ public class EditUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         User loggedInUser = (User) request.getSession().getAttribute("user");
+        System.out.println(loggedInUser.getId());
         // Retrieve the updated user details from the request parameters
-        long userId = Long.parseLong(request.getParameter("userId"));
+        long userId = loggedInUser.getId();
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -42,18 +43,23 @@ public class EditUserServlet extends HttpServlet {
                 || password.isEmpty()
                 || (! password.equals(passwordConfirmation));
         if (inputHasErrors) {
-            response.sendRedirect("/register");
+            request.getRequestDispatcher("/WEB-INF/user/UserEditForm.jsp").forward(request, response);
             return;
         }
 // update user
         DaoFactory.getUsersDao().update(new User(loggedInUser.getId(), username, email, Password.hash(password)));
-        response.sendRedirect("/profile");
+//        response.sendRedirect("/profile");
 
         // Create a User object with the updated values
         User updatedUser = new User(userId, username, email, password);
 
         // Call the update method to update the user in the database
         User.update(updatedUser);
+        Object user = DaoFactory.getUsersDao().findByUsername(username);
+        DaoFactory.getUsersDao().edit(user);
+        request.getSession().removeAttribute("user");
+        request.getSession().setAttribute("user", user);
+        response.sendRedirect("/profile");
 
     }
 }

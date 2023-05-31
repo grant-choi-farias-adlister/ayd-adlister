@@ -16,7 +16,7 @@
 <body>
  <h1>done</h1>
 <div>
-    <form action="/profile" method="get">
+    <form action="/edituser" method="post">
         <div class="form-group">
             <label for="username">Username</label>
             <input id="username" name="username" class="form-control" type="text">
@@ -34,6 +34,7 @@
             <input id="confirm_password" name="confirm_password" class="form-control" type="password">
         </div>
         <input type="submit" class="btn btn-primary btn-block">
+
     </form>
 </div>
 </body>

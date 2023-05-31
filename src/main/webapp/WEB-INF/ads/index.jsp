@@ -19,6 +19,9 @@
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
+
+            <h2><a href="/ads/detail?id=${ad.id}">${ad.title}</a></h2>
+
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
             <form action="/ads/edit" method="get">
@@ -29,6 +32,7 @@
                 <input type="hidden" name="id" value="${ad.id}">
                 <button>Delete</button>
             </form>
+
         </div>
     </c:forEach>
 </div>

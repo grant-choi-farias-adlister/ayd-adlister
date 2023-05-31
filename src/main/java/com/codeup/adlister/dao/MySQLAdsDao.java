@@ -54,6 +54,81 @@ public class MySQLAdsDao implements Ads {
     }
 
 
+    @Override
+    public void update(Ad ad) {
+        try {
+            System.out.println(ad.getTitle());
+            System.out.println(ad.getDescription());
+            System.out.println(ad.getId());
+
+
+            String updateQuery = "UPDATE ads SET title = ?, description = ? WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(updateQuery);
+            stmt.setString(1, ad.getTitle());
+            stmt.setString(2, ad.getDescription());
+            stmt.setLong(3, ad.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error updating the ad", e);
+        }
+    }
+    @Override
+    public Ad findById(long id) {
+        try{
+            String findIdQuery = "SELECT * FROM ads WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(findIdQuery);
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                long adId = rs.getLong("id");
+                long userId = rs.getLong("user_id");
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                return new Ad(adId, userId, title, description);
+            }
+        }catch(SQLException e){
+            throw new RuntimeException("Error finding id", e);
+        }
+        return null;
+    }
+    public List<Ad> findByUserId(long userId){
+        try{
+            String findUserIdQuery = "SELECT * FROM ads WHERE user_id = ?";
+            PreparedStatement stmt = connection.prepareStatement(findUserIdQuery);
+            stmt.setLong(1, userId);
+            System.out.println("USER ID = " + userId);
+            ResultSet rs = stmt.executeQuery();
+            List<Ad> userAds = new ArrayList<>();
+            while(rs.next()){
+                long adId = rs.getLong("id");
+                System.out.println("AD ID = " + adId);
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                Ad ad = new Ad(adId, userId, title, description);
+                userAds.add(ad);
+            }
+            return userAds;
+
+        }catch (SQLException e){
+            throw new RuntimeException("Error finding UserId", e);
+        }
+
+    }
+
+    @Override
+    public void delete(long adId) {
+        try {
+            String deleteQuery = "DELETE FROM ads WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(deleteQuery);
+            stmt.setLong(1, adId);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting the ad with ID: " + adId, e);
+        }
+    }
+
+
+
 
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(

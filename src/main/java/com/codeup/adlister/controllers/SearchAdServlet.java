@@ -1,9 +1,5 @@
 package com.codeup.adlister.controllers;
 
-import com.codeup.adlister.dao.DaoFactory;
-import com.codeup.adlister.models.Ad;
-import com.codeup.adlister.models.User;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +10,6 @@ import java.io.IOException;
 @WebServlet(name = "SearchAdServlet", urlPatterns = "/ads/search")
 public class SearchAdServlet extends HttpServlet {
 
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
@@ -23,6 +18,7 @@ public class SearchAdServlet extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
     }
 }
+
 
 //    @Override
 //    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

@@ -24,6 +24,9 @@ public class User {
     public User(long userId) {
     }
 
+//    public User(long userId) {
+//    }
+
     public static void update(User updatedUser) {
     }
 

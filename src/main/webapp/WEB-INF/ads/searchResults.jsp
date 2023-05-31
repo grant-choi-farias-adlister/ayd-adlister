@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.codeup.adlister.models.User" %><%--
   Created by IntelliJ IDEA.
   User: princessauriel
   Date: 5/31/23
@@ -22,8 +22,10 @@
 
 <div class="container">
 
-    <h1>Search Results</h1>
-    <p>Welcome, ${username}!</p>
+    <%-- Check if username exists --%>
+    <% if (request.getSession().getAttribute("user") != null) { %>
+    <h1>Hey, <%= ((User) request.getSession().getAttribute("user")).getUsername() %>, here are your search results!</h1>
+    <% } %>
     <ul>
         <c:forEach var="ad" items="${ads}">
             <li>${ad.title} - ${ad.description}</li>
@@ -33,6 +35,7 @@
 
 </body>
 </html>
+
 
 
 

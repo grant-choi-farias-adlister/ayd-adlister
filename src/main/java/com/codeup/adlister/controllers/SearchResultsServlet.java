@@ -15,14 +15,16 @@ import java.util.List;
 public class SearchResultsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Check if user is logged in
+        if (request.getSession().getAttribute("user") == null) {
+            response.sendRedirect("/login"); // Redirect to login page if not logged in
+            return;
+        }
+
         String query = request.getParameter("query");
         List<Ad> ads = DaoFactory.getAdsDao().search(query);
         request.setAttribute("ads", ads);
         request.getRequestDispatcher("/WEB-INF/ads/searchResults.jsp").forward(request, response);
     }
 }
-
-
-
-
 //this connects to index jsp file.

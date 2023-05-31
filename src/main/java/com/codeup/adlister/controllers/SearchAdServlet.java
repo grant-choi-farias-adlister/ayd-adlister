@@ -1,5 +1,10 @@
 package com.codeup.adlister.controllers;
 
+import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.User;
+
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -7,37 +12,48 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "SearchAdServlet", urlPatterns = "/ads/search")
-
 public class SearchAdServlet extends HttpServlet {
-//    notes to self.
-//    1. only the logged in user can search an ad
-//    2. if a user is not logged in they should be redirected
+
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getSession().getAttribute("user") == null) {
+            response.sendRedirect("/login");
+            return;
+        }
+        request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
+    }
+}
+
+//    @Override
+//    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+//        // Check if the user is logged in
+//        if (!userIsLoggedIn(request)) {
+//            // Redirect the user to the login page or any other appropriate page
+//            response.sendRedirect("/login");
+//            return;
+//        }
 //
-@Override
-protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // Check if the user is logged in
-    if (!userIsLoggedIn(request)) {
-        // Redirect the user to the login page or any other appropriate page
-        response.sendRedirect("/login");
-        return;
-    }
+//        // Get the search query from the request parameters
+//        String query = request.getParameter("query");
+//
+//        // Perform search logic here
+//
+//        // Forward the results to a JSP page for display
+//        request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
+//    }
 
-    // Get the search query from the request parameters
-    String query = request.getParameter("query");
+//    private boolean userIsLoggedIn(HttpServletRequest request) throws IOException {
+//        // Add your logic here to determine if the user is logged in
+////        this was also done with create add, user has to be logged in to create an add
+//
+//            User loggedInUser = (User) request.getSession().getAttribute("user");
+//            loggedInUser. /*the user is logged in now you want them to do what?*/
+//
+//            response.sendRedirect("/ads/search");
+//   ;
+//
+//        // Return true if the user is logged in, false otherwise
+//        return false;
+//    }
+//}
 
-    // Perform search logic here
-
-    // Forward the results to a JSP page for display
-    request.getRequestDispatcher("/WEB-INF/search-results.jsp").forward(request, response);
-}
-
-    private boolean userIsLoggedIn(HttpServletRequest request) {
-        // Add your logic here to determine if the user is logged in
-        // You can check for session attributes, cookies, or any other mechanism you're using for authentication
-        // Return true if the user is logged in, false otherwise
-        // For now, let's assume the user is not logged in
-        return false;
-    }
-
-
-}

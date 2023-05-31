@@ -21,6 +21,18 @@ public class User {
         this.password = password;
     }
 
+    public User(long userId) {
+    }
+
+//    public User(long userId) {
+//    }
+
+    public static void update(User updatedUser) {
+    }
+
+    public static void delete(User userToDelete) {
+    }
+
     public long getId() {
         return id;
     }

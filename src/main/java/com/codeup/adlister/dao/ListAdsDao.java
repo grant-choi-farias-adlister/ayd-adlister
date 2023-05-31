@@ -29,6 +29,9 @@ public class ListAdsDao implements Ads {
 
     @Override
     public void update(Ad ad) {
+        if (ads == null) {
+            ads = generateAds();
+        }
         for(Ad existedAd : ads){
             if(existedAd.getId() == ad.getId()){
                 existedAd.setTitle(ad.getTitle());
@@ -40,6 +43,9 @@ public class ListAdsDao implements Ads {
 
     @Override
     public void delete(long id) {
+        if (ads == null) {
+            ads = generateAds();
+        }
         Ad removeAd = null;
         for (Ad existedAd : ads) {
             if (existedAd.getId() == id) {
@@ -50,6 +56,30 @@ public class ListAdsDao implements Ads {
         if (removeAd != null) {
             ads.remove(removeAd);
         }
+    }
+
+    @Override
+    public Ad findById(long id) {
+        for (Ad ad : ads) {
+            if (ad.getId() == id) {
+                return ad;
+            }
+        }
+        return null; // If no ad with the given ID is found
+    }
+
+    @Override
+    public List<Ad> findByUserId(long userId) {
+        List<Ad> userAds = new ArrayList<>();
+        if (ads == null) {
+            ads = generateAds();
+        }
+        for (Ad ad : ads) {
+            if (ad.getUserId() == userId) {
+                userAds.add(ad);
+            }
+        }
+        return userAds;
     }
 
     private List<Ad> generateAds() {

@@ -14,23 +14,28 @@
     <div class="alert alert-danger" role="alert">
         This username is unavailable. Please choose a different username.
     </div>
+    <% } else if (request.getParameter("error") != null && request.getParameter("error").equals("password")) { %>
+    <%-- Display error message if passwords do not match --%>
+    <div class="alert alert-danger" role="alert">
+        Passwords do not match. Please enter the same password in both fields.
+    </div>
     <% } %>
     <form action="/register" method="post">
         <div class="form-group">
             <label for="username">Username</label>
-            <input id="username" name="username" class="form-control" type="text">
+            <input id="username" name="username" class="form-control" type="text" required>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input id="email" name="email" class="form-control" type="text">
+            <input id="email" name="email" class="form-control" type="text" required>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input id="password" name="password" class="form-control" type="password">
+            <input id="password" name="password" class="form-control" type="password" required>
         </div>
         <div class="form-group">
             <label for="confirm_password">Confirm Password</label>
-            <input id="confirm_password" name="confirm_password" class="form-control" type="password">
+            <input id="confirm_password" name="confirm_password" class="form-control" type="password" required>
         </div>
         <input type="submit" class="btn btn-primary btn-block">
     </form>

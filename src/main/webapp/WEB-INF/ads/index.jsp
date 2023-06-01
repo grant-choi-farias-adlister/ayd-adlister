@@ -5,6 +5,7 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
+
     <style>
         .container {
             margin-top: 50px;
@@ -75,6 +76,7 @@
             color: #286090;
         }
     </style>
+
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
@@ -95,6 +97,7 @@
         </div>
     </c:forEach>
 </div>
+
 
 </body>
 </html>

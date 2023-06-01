@@ -41,6 +41,7 @@
     </form>
 
     <c:forEach var="ad" items="${ads}">
+
         <div class="card">
             <h2><a href="/ads/detail?id=${ad.id}">${ad.title}</a></h2>
             <p class="card-description">${ad.description}</p>
@@ -52,6 +53,12 @@
                 <input type="hidden" name="id" value="${ad.id}">
                 <button>Delete</button>
             </form>
+
+        <div class="col-md-6">
+
+            <h2><a href="/ads/mainDetail?id=${ad.id}">${ad.title}</a></h2>
+
+
         </div>
     </c:forEach>
 </div>

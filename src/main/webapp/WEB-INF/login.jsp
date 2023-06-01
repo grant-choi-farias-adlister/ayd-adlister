@@ -4,6 +4,14 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Please Log In" />
     </jsp:include>
+    <style>
+        #btn:focus {
+            outline: none;
+        }
+        #btn:active {
+            transform: scale(0.98);
+        }
+    </style>
 </head>
 <body>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
@@ -18,7 +26,7 @@
                 <label for="password">Password</label>
                 <input id="password" name="password" class="form-control" type="password">
             </div>
-            <input type="submit" class="btn btn-primary btn-block" value="Log In">
+            <input type="submit" id= "btn" class="btn btn-primary btn-block" value="Log In">
         </form>
     </div>
 </body>

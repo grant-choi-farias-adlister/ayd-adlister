@@ -14,6 +14,11 @@
     <div class="alert alert-danger" role="alert">
         This username is unavailable. Please choose a different username.
     </div>
+    <% } else if (request.getParameter("error") != null && request.getParameter("error").equals("password")) { %>
+    <%-- Display error message if passwords do not match --%>
+    <div class="alert alert-danger" role="alert">
+        Passwords do not match. Please enter the same password in both fields.
+    </div>
     <% } %>
     <form action="/register" method="post">
         <div class="form-group">

@@ -5,7 +5,7 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
-    <link rel="stylesheet" type="text/css" href="/css/style.css"> <!-- Add a CSS file -->
+<%--    <link rel="stylesheet" type="text/css" href="/css/style.css"> <!-- Add a CSS file -->--%>
 
     <style>
         /* Inline CSS styles for demonstration purposes */
@@ -28,6 +28,7 @@
             margin-top: 5px;
         }
     </style>
+    <title></title>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
@@ -54,12 +55,12 @@
                 <button>Delete</button>
             </form>
 
-        <div class="col-md-6">
+<%--        <div class="col-md-6">--%>
 
-            <h2><a href="/ads/mainDetail?id=${ad.id}">${ad.title}</a></h2>
+<%--            <h2><a href="/ads/mainDetail?id=${ad.id}">${ad.title}</a></h2>--%>
 
 
-        </div>
+<%--        </div>--%>
     </c:forEach>
 </div>
 

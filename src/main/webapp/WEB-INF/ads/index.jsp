@@ -5,6 +5,29 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"> <!-- Add a CSS file -->
+
+    <style>
+        /* Inline CSS styles for demonstration purposes */
+        .container {
+            margin-top: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-weight: bold;
+        }
+
+        .card-description {
+            margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
@@ -18,12 +41,9 @@
     </form>
 
     <c:forEach var="ad" items="${ads}">
-        <div class="col-md-6">
-
+        <div class="card">
             <h2><a href="/ads/detail?id=${ad.id}">${ad.title}</a></h2>
-
-            <h2>${ad.title}</h2>
-            <p>${ad.description}</p>
+            <p class="card-description">${ad.description}</p>
             <form action="/ads/edit" method="get">
                 <input type="hidden" name="id" value="${ad.id}">
                 <button>Edit</button>
@@ -32,7 +52,6 @@
                 <input type="hidden" name="id" value="${ad.id}">
                 <button>Delete</button>
             </form>
-
         </div>
     </c:forEach>
 </div>

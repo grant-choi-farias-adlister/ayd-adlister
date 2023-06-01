@@ -6,20 +6,15 @@
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
     <style>
-        *{
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
+        /* CSS styling */
         .container {
             margin-top: 50px;
             text-align: center;
-            font-family: inherit;
         }
 
         h1 {
             color: #333;
-            font-family: inherit;
+            font-family: Arial, sans-serif;
         }
 
         form {
@@ -37,18 +32,20 @@
         label {
             display: block;
             font-weight: bold;
-            font-family: inherit;
+            font-family: Arial, sans-serif;
             margin-bottom: 5px;
         }
 
-        input, textarea {
+        input[type="text"],
+        textarea {
             padding: 10px;
             font-size: 16px;
             border-radius: 5px;
             border: 1px solid #ccc;
             width: 1000px;
         }
-        input {
+
+        input[type="submit"] {
             display: inline-block;
             background-color: #337ab7;
             color: #fff;
@@ -56,13 +53,12 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-family: inherit;
+            font-family: Arial, sans-serif;
             font-size: 16px;
             transition: background-color 0.3s ease;
-            width: 1000px;
         }
 
-        input:hover {
+        input[type="submit"]:hover {
             background-color: #286090;
         }
     </style>

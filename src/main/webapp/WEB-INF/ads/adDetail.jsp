@@ -15,9 +15,10 @@
             align-items: center;
         }
 
-        h1, h2, h3 {
+        h1, h3 {
             color: #333;
             font-family: Arial, sans-serif;
+            text-align: center;
         }
 
         p {
@@ -43,20 +44,24 @@
             margin-top: 20px;
         }
 
-        .button-group button {
+        .button-group form {
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0 10px;
+        }
+
+        .button-group button {
             background-color: #337ab7;
             color: #fff;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin: 0 10px;
             font-family: Arial, sans-serif;
             font-size: 16px;
             transition: background-color 0.3s ease;
+            width: 150px;
         }
 
         .button-group button:hover {
@@ -70,8 +75,8 @@
 <div class="container">
     <h1>Here is Your Ad's Detail</h1>
     <div class="col-md-6">
-        <h1>Title<br>${ad.title}</h1>
-        <h3>Description <br> ${ad.description}</h3>
+        <h1>${ad.title}</h1>
+        <h3>${ad.description}</h3>
         <p>Created By: ${sessionScope.user.username}</p>
         <div class="button-group">
             <form action="/ads/edit" method="get">

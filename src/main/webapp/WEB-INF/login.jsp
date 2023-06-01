@@ -28,11 +28,11 @@
     <form action="/login" method="POST">
         <div class="form-group">
             <label for="username">Username</label>
-            <input id="username" name="username" class="form-control" type="text" required>
+            <input type="text" id="username" name="username" class="form-control" value="${username}" required>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input id="password" name="password" class="form-control" type="password" required>
+            <input id="password" name="password" class="form-control" type="password"  required>
         </div>
         <input type="submit" id="btn" class="btn btn-primary btn-block" value="Log In">
     </form>

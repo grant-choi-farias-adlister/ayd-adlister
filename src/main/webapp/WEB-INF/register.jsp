@@ -27,18 +27,33 @@
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input id="email" name="email" class="form-control" type="text" required>
+            <input id="email" name="email" class="form-control" type="text" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input id="password" name="password" class="form-control" type="password" required>
+            <input id="password" name="password" class="form-control" type="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=]).{4,}">
+            <small id=“passwordRequirements” class=“form-text text-muted”>
+                Password must be at least 4 characters long and contain at least one uppercase letter, one digit, and one special character (*).
+            </small>
         </div>
         <div class="form-group">
             <label for="confirm_password">Confirm Password</label>
-            <input id="confirm_password" name="confirm_password" class="form-control" type="password" required>
+            <input id="confirm_password" name="confirm_password" class="form-control" type="password" required oninput="checkPasswordMatch">
         </div>
         <input type="submit" class="btn btn-primary btn-block">
     </form>
 </div>
 </body>
+<script>
+    function checkPasswordMatch(){
+		var password = document.getElementById("password").value;
+		var confirmPassword = document.getElementById("confirm_password").value;
+		var passwordMatchError = document.getElementById("passwordMatchError");
+		if( password !== confirmPassword){
+			passwordMatchError.textContent = "Passwords don't match.";
+        }else{
+			passwordMatchError.textContent ="";
+        }
+    }
+</script>
 </html>

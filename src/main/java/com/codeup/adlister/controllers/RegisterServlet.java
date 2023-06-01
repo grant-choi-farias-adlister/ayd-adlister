@@ -37,6 +37,12 @@ public class RegisterServlet extends HttpServlet {
             }
             return;
         }
+        // Password validation
+        String passwordValidation = validatePassword(password);
+        if (!passwordValidation.isEmpty()) {
+            response.sendRedirect("/registration?error= passwordValidation");
+            return;
+        }
 
         // Check if username already exists
         User existingUser = DaoFactory.getUsersDao().findByUsername(username);
@@ -54,5 +60,21 @@ public class RegisterServlet extends HttpServlet {
 
         DaoFactory.getUsersDao().insert(user);
         response.sendRedirect("/login");
+    }
+
+    private String validatePassword(String password) {
+        if (password.length() < 4){
+            return "Password must be at least 4 characters long.";
+        }
+        if (!password.matches(".*\\d*.")){
+            return "Password must contain at least one digit.";
+        }
+        if (!password.matches(".*[A-Z].*")){
+            return "Password must contain at least one uppercase letter.";
+        }
+        if(!password.matches(".*[!@#$%^&*].*")){
+            return "Password must contain one special character.";
+        }
+        return "";
     }
 }

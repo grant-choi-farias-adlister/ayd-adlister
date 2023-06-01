@@ -15,7 +15,9 @@
             color: #333;
             font-family: Arial, sans-serif;
         }
-
+        h1{
+            font-size: 60px;
+        }
         p {
             color: #666;
             font-family: Arial, sans-serif;
@@ -49,7 +51,7 @@
             margin-top: 20px;
         }
 
-        input[type="submit"] {
+        .btn {
             background-color: #337ab7;
             color: #fff;
             padding: 10px 20px;
@@ -59,25 +61,54 @@
             font-family: Arial, sans-serif;
             font-size: 16px;
             transition: background-color 0.3s ease;
+            width: 150px;
         }
 
-        input[type="submit"]:hover {
+        .btn:hover {
             background-color: #286090;
         }
-        input[type="submit"]:focus{
+        .btn:focus{
             transform: scale(0.98);
         }
         .user-info {
-            margin-bottom: 20px;
+            margin-bottom: 100px;
         }
 
         .user-info p {
             margin: 5px;
         }
-
         .edit-delete-buttons {
             margin-top: 20px;
+            display: table;
+            margin: 0 auto;
+        }
 
+        .edit-delete-buttons form {
+            display: table-cell;
+            padding: 10px;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .edit-delete-buttons h4 {
+            margin-top: 14px;
+            padding-bottom: 10px;
+        }
+
+        .edit-delete-buttons input[type="submit"] {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .edit-delete-buttons .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .edit-delete-buttons .form-container h4,
+        .edit-delete-buttons .form-container input[type="submit"] {
+            margin: 5px 0;
         }
     </style>
 </head>
@@ -116,16 +147,16 @@
     <div class="edit-delete-buttons">
         <!-- Edit button -->
         <h4>Do you want to change info on your account? Click Edit!</h4>
-        <form method="get" action="/edituser">
+        <form method="get" action="/edituser" class="editForm">
             <input type="hidden" name="userId" value="${sessionScope.user.id}">
-            <input type="submit" value="Edit">
+            <input type="submit" class="Btn" value="Edit">
         </form>
 
         <!-- Delete button -->
         <h4>Do you want to delete account? This will delete all your ads!</h4>
-        <form method="get" action="/deleteUser">
+        <form method="get" action="/deleteUser" class="deleteForm">
             <input type="hidden" name="userId" value="${sessionScope.user.id}">
-            <input type="submit" value="Delete">
+            <input type="submit" class="Btn" value="Delete">
         </form>
     </div>
 

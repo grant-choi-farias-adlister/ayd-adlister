@@ -12,11 +12,20 @@
     <jsp:include page="/WEB-INF/partials/head.jsp">
         <jsp:param name="title" value="Your Profile" />
     </jsp:include>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .container{
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
- <h1>done</h1>
-<div>
 
+<div class="container">
+    <h1>Please change your profile detail</h1>
     <form action="/edituser" method="post">
         <div class="form-group">
             <label for="username">Username</label>

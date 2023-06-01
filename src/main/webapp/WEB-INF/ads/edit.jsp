@@ -6,7 +6,6 @@
         <jsp:param name="title" value="Viewing All The Ads" />
     </jsp:include>
     <style>
-        /* CSS styling */
         .container {
             margin-top: 50px;
             text-align: center;

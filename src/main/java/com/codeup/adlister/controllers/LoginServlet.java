@@ -19,6 +19,17 @@ public class LoginServlet extends HttpServlet {
             response.sendRedirect("/profile");
             return;
         }
+        // Retrieve the entered username/password if available
+        String username = request.getParameter("username");
+
+
+        // Create a new User object with the entered username/password
+
+
+
+        // Set the User object as an attribute in the request
+        request.setAttribute("username", username);
+
         request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
     }
 
@@ -38,7 +49,7 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("user", user);
             response.sendRedirect("/profile");
         } else {
-            response.sendRedirect("/login?error=password");
+            response.sendRedirect("/login?error=password&username=" + username);
         }
     }
 }

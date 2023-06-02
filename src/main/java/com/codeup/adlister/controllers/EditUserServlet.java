@@ -28,7 +28,7 @@ public class EditUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         User loggedInUser = (User) request.getSession().getAttribute("user");
-        System.out.println(loggedInUser.getId());
+//        System.out.println(loggedInUser.getId());
         // Retrieve the updated user details from the request parameters
         long userId = loggedInUser.getId();
         String username = request.getParameter("username");
